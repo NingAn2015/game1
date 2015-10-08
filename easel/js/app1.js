@@ -1,6 +1,5 @@
-/**
- * Created by Annie on 2015/9/10.
- */
+// Created by Annie on 2015/9/10.
+ 
 var num = 20;
 var wid = 800;
 var hei = 500;
@@ -65,6 +64,7 @@ function gameOver(){
     gameState = STATE.END;
     oFrame.style.cursor = "auto";
     startGame();
+    createjs.Sound.play('background');
 }
 
 function resetGame(){
@@ -77,19 +77,19 @@ createjs.Ticker.setFPS(100);
 function initializeMusic(){
     createjs.Sound.registerSound(
         {
-            src:"eat.mp3",
+            src:"sound/eat.mp3",
             id:"eat"
         }
     );
     createjs.Sound.registerSound(
         {
-            src:"music.mp3",
+            src:"sound/bgm.mp3",
             id:"background"
         }
     );
     createjs.Sound.registerSound(
         {
-            src:"fail.mp3",
+            src:"sound/fail.mp3",
             id:"fail"
         }
     );
@@ -99,7 +99,7 @@ function initializeMusic(){
 }
 
 function initializeBackgroundPic(){
-    var bg = new createjs.Bitmap("bg.jpg");
+    var bg = new createjs.Bitmap("image/bg.jpg");
     stage.addChild(bg);
     stage.update();
 }
@@ -162,10 +162,10 @@ Obstacle.prototype.setType = function(type){
     this.type = type;
     switch(type){
         case 0:  // create a flower
-            createjs.Bitmap.call(this, "flower.png");
+            createjs.Bitmap.call(this, "image/flower.png");
             break;
         case 1:  // create a cream
-            createjs.Bitmap.call(this, "cream.png");
+            createjs.Bitmap.call(this, "image/cream.png");
             break;
     }
 };
@@ -173,7 +173,7 @@ Obstacle.prototype.setType = function(type){
 
 
 function mouseMove(){
-    var mousePic = new createjs.Bitmap("girl.png");
+    var mousePic = new createjs.Bitmap("image/girl.png");
     mousePic.rotation = 45;
     mousePic.regX = girlWidth / 2;
     mousePic.regY = girlHeight / 2;
